@@ -1,0 +1,485 @@
+/* GLOBAL STYLES & RESET (Konsisten dengan halaman sebelumnya) */
+:root {
+    --primary-color: #007bff;
+    --text-color: #343a40;
+    --secondary-text: #6c757d;
+    --light-bg: #f8f9fa;
+    --border-color: #e9ecef;
+    --card-bg: #ffffff;
+    --footer-bg: #343a40; /* Dark background for footer */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.5;
+    background-color: var(--light-bg);
+}
+
+.container {
+    max-width: 1000px; /* Lebar agak kecil untuk fokus formulir */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* --- NAVBAR STYLING (Consistency) --- */
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.nav-links, .user-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* --- PAGE HEADER --- */
+.main-content {
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.page-title i {
+    font-size: 0.8em;
+    margin-right: 15px;
+    color: var(--secondary-text);
+    cursor: pointer;
+}
+
+.page-subtitle {
+    color: var(--secondary-text);
+    font-size: 0.95em;
+}
+
+/* --- EDIT FORM CARD --- */
+.card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.form-section {
+    padding-bottom: 20px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 20px 0;
+}
+
+/* Form Input Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.input-row {
+    display: flex;
+    gap: 20px;
+}
+
+.input-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--secondary-text);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+input:disabled {
+    background-color: var(--light-bg);
+    color: var(--secondary-text);
+    cursor: not-allowed;
+}
+
+/* Profile Picture Upload */
+.profile-upload-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.current-profile-picture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.upload-btn {
+    display: inline-block;
+    background: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.upload-info {
+    font-size: 0.8em;
+    color: var(--secondary-text);
+}
+
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding-top: 20px;
+}
+
+.btn {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+    transition: opacity 0.2s;
+}
+
+.save-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #fff;
+    color: var(--secondary-text);
+    border: 1px solid var(--border-color);
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* --- Preferences Section (Toggle Styling) --- */
+.preferences-section {
+    padding: 20px 30px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.setting-item:first-of-type {
+    padding-top: 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.setting-item:last-of-type {
+    padding-bottom: 0;
+}
+
+.setting-text {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.setting-title {
+    font-weight: 600;
+    margin-bottom: 3px;
+    font-size: 0.95em;
+}
+
+.setting-desc {
+    font-size: 0.85em;
+    color: var(--secondary-text);
+}
+
+/* SWITCH STYLING (Sama seperti desain Profile) */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 25px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* --- FOOTER STYLING (Menggunakan brand StayBook dari gambar) --- */
+.main-footer {
+    background-color: var(--footer-bg);
+    color: #fff;
+    padding-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    max-width: 250px;
+}
+
+.footer-brand .logo {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.footer-content h4 {
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.footer-links-group ul {
+    list-style: none;
+}
+
+.footer-links-group a {
+    color: #ccc;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.footer-links-group a:hover {
+    color: var(--primary-color);
+}
+
+.social-icons a {
+    color: #ccc;
+    font-size: 1.2em;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    background-color: #212529;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.8em;
+    color: #aaa;
+    border-top: 1px solid #495057;
+}
+
+/* ======================================= */
+/* MEDIA QUERIES UNTUK RESPONSIF */
+/* ======================================= */
+
+/* Tampilan Tablet (max-width: 992px) */
+@media (max-width: 992px) {
+    .input-row {
+        flex-direction: column; /* Tumpuk input berdampingan di tablet */
+    }
+
+    .footer-content > div {
+        flex-basis: 45%;
+        margin-bottom: 30px;
+    }
+}
+
+/* Tampilan Mobile (max-width: 600px) */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Navbar */
+    .nav-links, .user-info {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Form Card */
+    .card {
+        padding: 20px;
+    }
+
+    .profile-upload-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse; /* Tombol Cancel di atas Save Changes */
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%; /* Tombol penuh */
+    }
+
+    /* Preferences */
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .setting-text {
+        width: 100%;
+    }
+
+    .switch {
+        align-self: flex-end; /* Toggle di sisi kanan */
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-links-group {
+        width: 50%; /* Atur link dalam 2 kolom */
+        float: left;
+    }
+
+    .footer-connect {
+        clear: both;
+        padding-top: 20px;
+    }
+}

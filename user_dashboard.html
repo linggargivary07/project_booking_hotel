@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BHotel - User Dashboard</title>
+    <link rel="stylesheet" href="css/user_dashboard_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">BHotel</div>
+            <nav class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#">Rooms</a>
+                <a href="#">History</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="user-info">
+                <a href="#">Dashboard</a>
+                <a href="#">
+                    <div class="profile-icon">
+                        <img src="https://via.placeholder.com/30/007bff/ffffff?text=S" alt="Profile" style="border-radius: 50%;">
+                    </div>
+                    Profile
+                </a>
+            </div>
+            <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <section class="dashboard-header">
+            <h1>Welcome back, **Sarah**</h1>
+            <p>Manage your bookings and explore new destinations</p>
+        </section>
+
+        <section class="active-bookings">
+            <div class="section-title-bar">
+                <h2>Active Bookings</h2>
+                <button class="new-booking-btn">
+                    <i class="fa-solid fa-plus"></i> New Booking
+                </button>
+            </div>
+            
+            <div class="booking-card" data-status="confirmed">
+                <img src="https://via.placeholder.com/150x100?text=Grand+Plaza" alt="Grand Plaza Hotel" class="hotel-image">
+                <div class="booking-details">
+                    <h3 class="hotel-name">Grand Plaza Hotel</h3>
+                    <p class="room-info">Deluxe Suite • Room 405</p>
+
+                    <div class="booking-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Check-in</span>
+                            <span class="spec-value">Dec 24, 2024</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Check-out</span>
+                            <span class="spec-value">Dec 28, 2024</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Guests</span>
+                            <span class="spec-value">2 Adults</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-actions">
+                    <span class="status confirmed">Confirmed</span>
+                    <button class="action-btn view-btn">View</button>
+                    <button class="action-btn modify-btn">Modify</button>
+                </div>
+            </div>
+
+            <div class="booking-card" data-status="upcoming">
+                <img src="https://via.placeholder.com/150x100?text=Seaside+Resort" alt="Seaside Resort & Spa" class="hotel-image">
+                <div class="booking-details">
+                    <h3 class="hotel-name">Seaside Resort & Spa</h3>
+                    <p class="room-info">Ocean View Room • Room 212</p>
+
+                    <div class="booking-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Check-in</span>
+                            <span class="spec-value">Jan 15, 2025</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Check-out</span>
+                            <span class="spec-value">Jan 20, 2025</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Guests</span>
+                            <span class="spec-value">2 Adults, 1 Child</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-actions">
+                    <span class="status upcoming">Upcoming</span>
+                    <button class="action-btn view-btn">View</button>
+                    <button class="action-btn modify-btn">Modify</button>
+                </div>
+            </div>
+
+            <div class="booking-card" data-status="upcoming">
+                <img src="https://via.placeholder.com/150x100?text=Seaside+Resort" alt="Seaside Resort & Spa" class="hotel-image">
+                <div class="booking-details">
+                    <h3 class="hotel-name">Seaside Resort & Spa</h3>
+                    <p class="room-info">Ocean View Room • Room 212</p>
+
+                    <div class="booking-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Check-in</span>
+                            <span class="spec-value">Jan 15, 2025</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Check-out</span>
+                            <span class="spec-value">Jan 20, 2025</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Guests</span>
+                            <span class="spec-value">2 Adults, 1 Child</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-actions">
+                    <span class="status upcoming">Upcoming</span>
+                    <button class="action-btn view-btn">View</button>
+                    <button class="action-btn modify-btn">Modify</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="script/user_dashboard_script.js"></script>
+</body>
+</html>

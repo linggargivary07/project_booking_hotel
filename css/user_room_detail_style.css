@@ -1,0 +1,397 @@
+/* GLOBAL STYLES & RESET (Consistency) */
+:root {
+    --primary-color: #007bff; /* Biru untuk tombol booking */
+    --success-color: #28a745; /* Hijau untuk status Available */
+    --text-color: #343a40;
+    --secondary-text: #6c757d;
+    --light-bg: #f8f9fa;
+    --border-color: #e9ecef;
+    --card-bg: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* --- NAVBAR STYLING (Konsisten) --- */
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.nav-links, .user-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* --- MAIN CONTENT & GRID LAYOUT --- */
+.main-content {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.room-content-grid {
+    display: grid;
+    /* Dua kolom: 2/3 untuk detail, 1/3 untuk booking widget */
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+/* --- LEFT COLUMN: ROOM INFO --- */
+.room-info-section {
+    /* Konten detail kamar */
+}
+
+.main-room-image {
+    width: 100%;
+    height: auto;
+    max-height: 550px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.room-title-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.room-name {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-right: 15px;
+}
+
+.room-status {
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.room-status.available {
+    background-color: #e8f5e9;
+    color: var(--success-color);
+}
+
+.room-specs {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.95em;
+    color: var(--secondary-text);
+    margin-bottom: 30px;
+}
+
+.room-specs i {
+    margin-right: 5px;
+}
+
+.dot-separator:after {
+    content: "•";
+    color: var(--border-color);
+    margin-left: -5px; /* Menyesuaikan posisi titik */
+}
+
+.room-description h2, .room-amenities h2 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-top: 30px;
+}
+
+.room-description p {
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+/* Amenities Grid */
+.amenities-grid {
+    display: grid;
+    /* 3 kolom di desktop */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding-top: 10px;
+}
+
+.amenity-item {
+    font-size: 0.95em;
+    color: var(--secondary-text);
+}
+
+.amenity-item i {
+    color: var(--primary-color);
+    margin-right: 10px;
+    width: 18px; /* Pastikan ikon sejajar */
+    text-align: center;
+}
+
+/* --- RIGHT COLUMN: BOOKING WIDGET --- */
+.booking-widget {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: fit-content; /* Agar tidak memanjang ke bawah */
+    position: sticky;
+    top: 20px;
+}
+
+.price-box {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.main-price {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.price-unit {
+    font-size: 1em;
+    color: var(--secondary-text);
+    margin-left: 5px;
+}
+
+.includes-info {
+    font-size: 0.8em;
+    color: var(--secondary-text);
+}
+
+/* Form Styling */
+.booking-form {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85em;
+    color: var(--secondary-text);
+    margin-bottom: 5px;
+}
+
+input[type="date"], select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    /* Hapus ikon default dari input date */
+    appearance: none; 
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.calendar-icon {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    color: var(--secondary-text);
+    pointer-events: none; /* Agar klik bisa menembus ikon */
+}
+
+/* Price Breakdown */
+.price-breakdown {
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+    margin-bottom: 20px;
+}
+
+.price-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    color: var(--secondary-text);
+}
+
+.total-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1em;
+    font-weight: 700;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 10px;
+}
+
+.book-btn {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+    background-color: #0056b3;
+}
+
+.cancellation-policy {
+    text-align: center;
+    font-size: 0.75em;
+    color: var(--secondary-text);
+    margin-top: 10px;
+}
+
+/* --- FOOTER STYLING (Konsisten) --- */
+.main-footer {
+    background-color: #343a40;
+    color: #fff;
+    padding-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-about .logo { color: #fff; }
+.footer-connect a { color: #ccc; }
+
+.footer-bottom {
+    background-color: #212529;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.8em;
+    color: #aaa;
+    border-top: 1px solid #495057;
+}
+
+
+/* ======================================= */
+/* MEDIA QUERIES UNTUK RESPONSIF */
+/* ======================================= */
+
+/* Tampilan Tablet (max-width: 992px) */
+@media (max-width: 992px) {
+    .room-content-grid {
+        /* Pindah ke satu kolom di tablet */
+        grid-template-columns: 1fr;
+    }
+
+    .booking-widget {
+        position: static; /* Hapus sticky di mobile/tablet */
+        margin-top: 30px;
+    }
+
+    .amenities-grid {
+        /* 2 kolom di tablet */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content > div {
+        flex-basis: 45%;
+        margin-bottom: 30px;
+    }
+}
+
+/* Tampilan Mobile (max-width: 600px) */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Navbar */
+    .nav-links, .user-info {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .room-name {
+        font-size: 1.5em;
+    }
+
+    .room-specs {
+        flex-wrap: wrap; /* Spesifikasi kamar pindah ke baris baru */
+        gap: 10px;
+    }
+    
+    .dot-separator {
+        display: none; /* Hapus titik pemisah di mobile */
+    }
+
+    .amenities-grid {
+        /* 1 kolom di mobile */
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-links {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
