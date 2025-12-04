@@ -1,341 +1,342 @@
 /* GLOBAL STYLES & RESET */
 :root {
-    --primary-color: #3f51b5; /* Mirip dengan warna tombol View Details */
-    --secondary-color: #f5f5f5;
-    --text-color: #333;
-    --light-text: #666;
-    --dark-bg: #1e1e1e;
-    --border-color: #ddd;
-    --available-color: #4caf50; /* Hijau */
-    --limited-color: #ff9800; /* Oranye */
-    --unavailable-color: #f44336; /* Merah */
+  --primary-color: #007bff; /* Mirip dengan warna tombol View Details */
+  --secondary-color: #6c757d;
+  --text-color: #333;
+  --light-text: #666;
+  --dark-bg: #1e1e1e;
+  --border-color: #e9ecef;
+  --available-color: #4caf50; /* Hijau */
+  --limited-color: #ff9800; /* Oranye */
+  --unavailable-color: #f44336; /* Merah */
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: var(--text-color);
-    line-height: 1.6;
-    background-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  background-color: #fff;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 a {
-    text-decoration: none;
-    color: var(--text-color);
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 /* --- NAVBAR STYLING --- */
 .navbar {
-    background-color: #fff;
-    border-bottom: 1px solid var(--border-color);
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    font-size: 1.5em;
-    font-weight: 700;
-    color: var(--primary-color);
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
 .nav-links {
-    display: flex;
-    gap: 25px;
+  display: flex;
+  gap: 25px;
 }
 
 .nav-links a {
-    font-size: 1em;
-    padding: 5px 0;
-    transition: color 0.3s;
+  font-size: 1em;
+  padding: 5px 0;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .user-info {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .profile-icon {
-    width: 30px;
-    height: 30px;
-    background-color: var(--secondary-color);
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
 }
 
 .menu-toggle {
-    display: none; /* Sembunyikan di desktop */
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
-    color: var(--text-color);
+  display: none; /* Sembunyikan di desktop */
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: var(--text-color);
 }
 
 /* --- MAIN CONTENT & HEADER --- */
 .main-content {
-    padding-top: 40px;
-    padding-bottom: 80px;
+  padding-top: 40px;
+  padding-bottom: 80px;
 }
 
 .room-list-header h1 {
-    font-size: 2em;
-    font-weight: 600;
-    margin-bottom: 5px;
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .room-list-header p {
-    color: var(--light-text);
-    margin-bottom: 30px;
+  color: var(--light-text);
+  margin-bottom: 30px;
 }
 
 /* --- FILTER SECTION --- */
 .filter-section {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
 }
 
 .filter-label {
-    font-size: 0.9em;
-    color: var(--light-text);
-    font-weight: 500;
+  font-size: 0.9em;
+  color: var(--light-text);
+  font-weight: 500;
 }
 
 .filter-buttons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .filter-btn {
-    background-color: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.2s, border-color 0.2s;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .filter-btn.active {
-    background-color: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
 }
 
 .filter-btn:hover:not(.active) {
-    background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
 /* --- ROOM CARD GRID --- */
 .room-grid {
-    display: grid;
-    /* 3 kolom di desktop */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+  display: grid;
+  /* 3 kolom di desktop */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
 .room-card {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    background-color: #fff;
-    transition: transform 0.3s;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  transition: transform 0.3s;
 }
 
 .room-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .room-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
 }
 
 .room-details {
-    padding: 15px;
+  padding: 15px;
 }
 
 .room-name {
-    font-size: 1.2em;
-    font-weight: 600;
-    margin-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .room-status {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.75em;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 10px;
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .room-status.available {
-    background-color: #e8f5e9;
-    color: var(--available-color);
+  background-color: #e8f5e9;
+  color: var(--available-color);
 }
 .room-status.limited {
-    background-color: #fff3e0;
-    color: var(--limited-color);
+  background-color: #fff3e0;
+  color: var(--limited-color);
 }
 .room-status.unavailable {
-    background-color: #ffebee;
-    color: var(--unavailable-color);
+  background-color: #ffebee;
+  color: var(--unavailable-color);
 }
 
 .room-specs {
-    display: flex;
-    gap: 15px;
-    font-size: 0.9em;
-    color: var(--light-text);
-    margin-bottom: 15px;
+  display: flex;
+  gap: 15px;
+  font-size: 0.9em;
+  color: var(--light-text);
+  margin-bottom: 15px;
 }
 
 .room-specs i {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .room-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--border-color);
-    padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
 }
 
 .room-price {
-    font-size: 1.4em;
-    font-weight: 700;
-    color: var(--text-color);
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--text-color);
 }
 
 .room-price small {
-    font-size: 0.6em;
-    font-weight: 400;
-    color: var(--light-text);
-    margin-left: 2px;
+  font-size: 0.6em;
+  font-weight: 400;
+  color: var(--light-text);
+  margin-left: 2px;
 }
 
 .view-details-btn {
-    background-color: var(--dark-bg);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: background-color 0.3s;
+  background-color: var(--dark-bg);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: background-color 0.3s;
 }
 
 .view-details-btn:hover:not(:disabled) {
-    background-color: #333;
+  background-color: #333;
 }
 
 .view-details-btn.disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 /* --- FOOTER STYLING --- */
 .main-footer {
-    background-color: var(--dark-bg);
-    color: #fff;
-    padding-top: 50px;
+  background-color: var(--dark-bg);
+  color: #fff;
+  padding-top: 50px;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 40px;
-    flex-wrap: wrap; /* Penting untuk responsif */
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  flex-wrap: wrap; /* Penting untuk responsif */
 }
 
 .footer-about {
-    max-width: 300px;
+  max-width: 300px;
 }
 
 .footer-about .logo {
-    color: #fff;
-    margin-bottom: 10px;
+  color: #fff;
+  margin-bottom: 10px;
 }
 
 .footer-content h4 {
-    font-size: 1.1em;
-    font-weight: 600;
-    margin-bottom: 15px;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
 .footer-links ul {
-    list-style: none;
+  list-style: none;
 }
 
 .footer-links a {
-    color: #ccc;
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.9em;
-    transition: color 0.3s;
+  color: #ccc;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  transition: color 0.3s;
 }
 
 .footer-links a:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .social-icons a {
-    color: #ccc;
-    font-size: 1.2em;
-    margin-right: 15px;
-    transition: color 0.3s;
+  color: #ccc;
+  font-size: 1.2em;
+  margin-right: 15px;
+  transition: color 0.3s;
 }
 
 .social-icons a:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .footer-bottom {
-    background-color: #111;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 0.8em;
-    color: #aaa;
-    border-top: 1px solid #333;
+  background-color: #111;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.8em;
+  color: #aaa;
+  border-top: 1px solid #333;
 }
 
 /* ======================================= */
@@ -344,75 +345,76 @@ a {
 
 /* Tampilan Tablet (max-width: 992px) */
 @media (max-width: 992px) {
-    .room-grid {
-        /* 2 kolom di tablet */
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
+  .room-grid {
+    /* 2 kolom di tablet */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
 
-    .nav-links, .user-info {
-        display: none; /* Sembunyikan di bawah 992px */
-    }
+  .nav-links,
+  .user-info {
+    display: none; /* Sembunyikan di bawah 992px */
+  }
 
-    .menu-toggle {
-        display: block; /* Tampilkan tombol menu di tablet */
-    }
+  .menu-toggle {
+    display: block; /* Tampilkan tombol menu di tablet */
+  }
 
-    .footer-content > div {
-        flex-basis: 45%; /* Ambil hampir setengah lebar */
-        margin-bottom: 30px;
-    }
+  .footer-content > div {
+    flex-basis: 45%; /* Ambil hampir setengah lebar */
+    margin-bottom: 30px;
+  }
 
-    .footer-about {
-        order: 4; /* Pindahkan ke paling bawah */
-    }
+  .footer-about {
+    order: 4; /* Pindahkan ke paling bawah */
+  }
 }
 
 /* Tampilan Mobile (max-width: 600px) */
 @media (max-width: 600px) {
-    .container {
-        padding: 0 15px;
-    }
+  .container {
+    padding: 0 15px;
+  }
 
-    .room-grid {
-        /* 1 kolom di mobile */
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+  .room-grid {
+    /* 1 kolom di mobile */
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-    /* Penataan Ulang Filter */
-    .filter-section {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
+  /* Penataan Ulang Filter */
+  .filter-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
-    .filter-buttons {
-        flex-wrap: wrap;
-    }
+  .filter-buttons {
+    flex-wrap: wrap;
+  }
 
-    .room-footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    
-    .view-details-btn {
-        width: 100%; /* Tombol penuh di mobile */
-        text-align: center;
-    }
+  .room-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
-    /* Penataan Ulang Footer */
-    .footer-content {
-        flex-direction: column;
-    }
+  .view-details-btn {
+    width: 100%; /* Tombol penuh di mobile */
+    text-align: center;
+  }
 
-    .footer-content > div {
-        flex-basis: 100%;
-        margin-bottom: 30px;
-    }
+  /* Penataan Ulang Footer */
+  .footer-content {
+    flex-direction: column;
+  }
 
-    .footer-about {
-        order: initial;
-    }
+  .footer-content > div {
+    flex-basis: 100%;
+    margin-bottom: 30px;
+  }
+
+  .footer-about {
+    order: initial;
+  }
 }

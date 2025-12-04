@@ -1,305 +1,334 @@
 /* GLOBAL STYLES & RESET (Consistency) */
 :root {
-    --primary-color: #007bff;
-    --text-color: #343a40;
-    --secondary-text: #6c757d;
-    --light-bg: #f8f9fa;
-    --border-color: #e9ecef;
-    --card-bg: #ffffff;
-    --upcoming-color: #ffc107; /* Kuning/Oranye */
-    --completed-color: #28a745; /* Hijau */
-    --cancelled-color: #dc3545; /* Merah */
+  --primary-color: #007bff;
+  --text-color: #343a40;
+  --secondary-text: #6c757d;
+  --light-bg: #f8f9fa;
+  --border-color: #e9ecef;
+  --card-bg: #ffffff;
+  --upcoming-color: #ffc107; /* Kuning/Oranye */
+  --completed-color: #28a745; /* Hijau */
+  --cancelled-color: #dc3545; /* Merah */
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    color: var(--text-color);
-    line-height: 1.6;
-    background-color: var(--light-bg);
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  background-color: var(--light-bg);
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 a {
-    text-decoration: none;
-    color: var(--text-color);
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 /* --- NAVBAR STYLING (Konsisten) --- */
 .navbar {
-    background-color: #fff;
-    border-bottom: 1px solid var(--border-color);
-    padding: 15px 0;
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    font-size: 1.3em;
-    font-weight: 700;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
-.nav-links, .user-info {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  font-size: 1em;
+  padding: 5px 0;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.user-info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .profile-icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-    border-radius: 50%;
-    overflow: hidden;
+  width: 30px;
+  height: 30px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
 }
 
 .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
-    color: var(--text-color);
+  display: none; /* Sembunyikan di desktop */
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: var(--text-color);
 }
 
 /* --- PAGE HEADER --- */
 .main-content {
-    padding-top: 40px;
-    padding-bottom: 60px;
-    max-width: 900px; /* Batasi lebar untuk fokus konten */
-    margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  max-width: 900px; /* Batasi lebar untuk fokus konten */
+  margin: 0 auto;
 }
 
 .page-title {
-    font-size: 1.8em;
-    font-weight: 600;
-    margin-bottom: 5px;
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .page-subtitle {
-    color: var(--secondary-text);
-    font-size: 0.95em;
-    margin-bottom: 25px;
+  color: var(--secondary-text);
+  font-size: 0.95em;
+  margin-bottom: 25px;
 }
 
 /* --- FILTER TAB --- */
 .filter-tab {
-    border-bottom: 2px solid var(--border-color);
-    margin-bottom: 20px;
-    display: flex;
-    gap: 20px;
-    overflow-x: auto; /* Untuk mobile */
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto; /* Untuk mobile */
 }
 
 .tab-btn {
-    background: none;
-    border: none;
-    padding: 10px 0;
-    font-size: 1em;
-    color: var(--secondary-text);
-    cursor: pointer;
-    transition: color 0.2s, border-bottom 0.2s;
-    white-space: nowrap; /* Cegah teks filter pecah */
+  background: none;
+  border: none;
+  padding: 10px 0;
+  font-size: 1em;
+  color: var(--secondary-text);
+  cursor: pointer;
+  transition: color 0.2s, border-bottom 0.2s;
+  white-space: nowrap; /* Cegah teks filter pecah */
 }
 
 .tab-btn.active {
-    color: var(--primary-color);
-    border-bottom: 3px solid var(--primary-color);
-    font-weight: 600;
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--primary-color);
+  font-weight: 600;
 }
 
 /* --- BOOKING HISTORY CARD --- */
 .booking-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .history-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .card-details {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .room-name {
-    font-size: 1.1em;
-    font-weight: 600;
-    display: inline;
-    margin-right: 15px;
+  font-size: 1.1em;
+  font-weight: 600;
+  display: inline;
+  margin-right: 15px;
 }
 
 .status {
-    padding: 4px 10px;
-    border-radius: 50px;
-    font-size: 0.75em;
-    font-weight: 600;
-    text-transform: uppercase;
-    display: inline-block;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
 }
 
 .status.upcoming {
-    background-color: #fff3cd;
-    color: var(--upcoming-color);
+  background-color: #fff3cd;
+  color: var(--upcoming-color);
 }
 .status.completed {
-    background-color: #d4edda;
-    color: var(--completed-color);
+  background-color: #d4edda;
+  color: var(--completed-color);
 }
 .status.cancelled {
-    background-color: #f8d7da;
-    color: var(--cancelled-color);
+  background-color: #f8d7da;
+  color: var(--cancelled-color);
 }
 
 .booking-data {
-    display: flex;
-    gap: 30px;
-    margin-top: 15px;
+  display: flex;
+  gap: 30px;
+  margin-top: 15px;
 }
 
 .data-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .label {
-    font-size: 0.8em;
-    color: var(--secondary-text);
-    margin-bottom: 3px;
+  font-size: 0.8em;
+  color: var(--secondary-text);
+  margin-bottom: 3px;
 }
 
 .value {
-    font-weight: 500;
-    font-size: 0.95em;
+  font-weight: 500;
+  font-size: 0.95em;
 }
 
 .card-actions {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-shrink: 0;
 }
 
 .price-info {
-    text-align: right;
+  text-align: right;
 }
 
 .price-value {
-    font-size: 1.4em;
-    font-weight: 700;
-    display: block;
+  font-size: 1.4em;
+  font-weight: 700;
+  display: block;
 }
 
 .price-label {
-    font-size: 0.8em;
-    color: var(--secondary-text);
+  font-size: 0.8em;
+  color: var(--secondary-text);
 }
 
 .price-info.refunded .price-label {
-    color: var(--cancelled-color);
-    font-weight: 600;
+  color: var(--cancelled-color);
+  font-weight: 600;
 }
 
 .view-details-btn {
-    background-color: var(--card-bg);
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.2s;
+  background-color: var(--card-bg);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
 }
 
 .view-details-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 /* --- PAGINATION --- */
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
 }
 
-.page-arrow, .page-number {
-    background: none;
-    border: 1px solid var(--border-color);
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    color: var(--text-color);
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+.page-arrow,
+.page-number {
+  background: none;
+  border: 1px solid var(--border-color);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .page-number.active {
-    background-color: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
 }
 
 .page-arrow:disabled {
-    color: var(--border-color);
-    cursor: not-allowed;
+  color: var(--border-color);
+  cursor: not-allowed;
 }
 
-.page-arrow:not(:disabled):hover, .page-number:not(.active):hover {
-    background-color: var(--light-bg);
+.page-arrow:not(:disabled):hover,
+.page-number:not(.active):hover {
+  background-color: var(--light-bg);
 }
 
 /* --- FOOTER STYLING (Konsisten) --- */
 .main-footer {
-    background-color: #343a40;
-    color: #fff;
-    padding-top: 50px;
+  background-color: #343a40;
+  color: #fff;
+  padding-top: 50px;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 40px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  flex-wrap: wrap;
 }
 
-.footer-about .logo { color: #fff; }
-.footer-connect a { color: #ccc; }
+.footer-about .logo {
+  color: #fff;
+}
+.footer-connect a {
+  color: #ccc;
+}
 
 .footer-bottom {
-    background-color: #212529;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 0.8em;
-    color: #aaa;
-    border-top: 1px solid #495057;
+  background-color: #212529;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.8em;
+  color: #aaa;
+  border-top: 1px solid #495057;
 }
-
 
 /* ======================================= */
 /* MEDIA QUERIES UNTUK RESPONSIF */
@@ -307,73 +336,74 @@ a {
 
 /* Tampilan Tablet (max-width: 992px) */
 @media (max-width: 992px) {
-    .booking-data {
-        gap: 20px;
-    }
+  .booking-data {
+    gap: 20px;
+  }
 }
 
 /* Tampilan Mobile (max-width: 600px) */
 @media (max-width: 600px) {
-    .container {
-        padding: 0 15px;
-    }
+  .container {
+    padding: 0 15px;
+  }
 
-    /* Navbar */
-    .nav-links, .user-info {
-        display: none;
-    }
+  /* Navbar */
+  .nav-links,
+  .user-info {
+    display: none;
+  }
 
-    .menu-toggle {
-        display: block;
-    }
+  .menu-toggle {
+    display: block;
+  }
 
-    /* History Card */
-    .history-card {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px;
-    }
-    
-    .room-name {
-        margin-right: 10px;
-    }
+  /* History Card */
+  .history-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
 
-    .status {
-        margin-left: 0;
-    }
+  .room-name {
+    margin-right: 10px;
+  }
 
-    .booking-data {
-        flex-direction: column; /* Tumpuk data di mobile */
-        gap: 10px;
-        margin-top: 10px;
-        width: 100%;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 15px;
-        margin-bottom: 15px;
-    }
+  .status {
+    margin-left: 0;
+  }
 
-    .card-actions {
-        width: 100%;
-        justify-content: space-between;
-        gap: 10px;
-    }
+  .booking-data {
+    flex-direction: column; /* Tumpuk data di mobile */
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
 
-    .view-details-btn {
-        flex-grow: 1; /* Biarkan tombol mengambil ruang yang tersisa */
-        padding: 10px;
-    }
-    
-    .price-info {
-        text-align: left;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        gap: 20px;
-    }
+  .card-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
 
-    .footer-links {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+  .view-details-btn {
+    flex-grow: 1; /* Biarkan tombol mengambil ruang yang tersisa */
+    padding: 10px;
+  }
+
+  .price-info {
+    text-align: left;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-links {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }

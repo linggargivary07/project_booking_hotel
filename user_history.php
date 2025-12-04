@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serene - Booking History</title>
+    <link rel="stylesheet" href="css/user_history_style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <div class="logo">Serene</div>
+        <nav class="nav-links">
+          <a href="user_dashboard.php">Home</a>
+          <a href="user_room.php">Rooms</a>
+          <a href="user_history.php" class="active">History</a>
+          <a href="#">Contact</a>
+        </nav>
+        <div class="user-info">
+          <a href="#">Dashboard</a>
+          <a href="user_profile.php">
+            <div class="profile-icon">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            Profile
+          </a>
+        </div>
+        <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </header>
+
+    <main class="container main-content">
+      <section class="page-header">
+        <h1 class="page-title">Booking History</h1>
+        <p class="page-subtitle">
+          View and manage your previous and upcoming room bookings
+        </p>
+      </section>
+
+      <div class="filter-tab">
+        <button class="tab-btn active" data-filter="all">All Bookings</button>
+        <button class="tab-btn" data-filter="upcoming">Upcoming</button>
+        <button class="tab-btn" data-filter="completed">Completed</button>
+        <button class="tab-btn" data-filter="cancelled">Cancelled</button>
+      </div>
+
+      <section class="booking-list">
+        <div class="history-card" data-status="upcoming">
+          <div class="card-details">
+            <h3 class="room-name">Standard Single Room</h3>
+            <span class="status upcoming">Upcoming</span>
+
+            <div class="booking-data">
+              <div class="data-group check-in">
+                <span class="label">Check-in</span>
+                <span class="value">Dec 15, 2024</span>
+              </div>
+              <div class="data-group check-out">
+                <span class="label">Check-out</span>
+                <span class="value">Dec 22, 2024</span>
+              </div>
+              <div class="data-group duration">
+                <span class="label">Duration</span>
+                <span class="value">7 nights</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <div class="price-info">
+              <span class="price-value">$420</span>
+              <span class="price-label">Total</span>
+            </div>
+            <button class="view-details-btn">View Details</button>
+          </div>
+        </div>
+
+        <div class="history-card" data-status="completed">
+          <div class="card-details">
+            <h3 class="room-name">Deluxe Double Room</h3>
+            <span class="status completed">Completed</span>
+
+            <div class="booking-data">
+              <div class="data-group check-in">
+                <span class="label">Check-in</span>
+                <span class="value">Nov 10, 2024</span>
+              </div>
+              <div class="data-group check-out">
+                <span class="label">Check-out</span>
+                <span class="value">Nov 15, 2024</span>
+              </div>
+              <div class="data-group duration">
+                <span class="label">Duration</span>
+                <span class="value">5 nights</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <div class="price-info">
+              <span class="price-value">$375</span>
+              <span class="price-label">Total</span>
+            </div>
+            <button class="view-details-btn">View Details</button>
+          </div>
+        </div>
+
+        <div class="history-card" data-status="upcoming">
+          <div class="card-details">
+            <h3 class="room-name">Economy Single Room</h3>
+            <span class="status upcoming">Upcoming</span>
+
+            <div class="booking-data">
+              <div class="data-group check-in">
+                <span class="label">Check-in</span>
+                <span class="value">Jan 8, 2025</span>
+              </div>
+              <div class="data-group check-out">
+                <span class="label">Check-out</span>
+                <span class="value">Jan 12, 2025</span>
+              </div>
+              <div class="data-group duration">
+                <span class="label">Duration</span>
+                <span class="value">4 nights</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <div class="price-info">
+              <span class="price-value">$240</span>
+              <span class="price-label">Total</span>
+            </div>
+            <button class="view-details-btn">View Details</button>
+          </div>
+        </div>
+
+        <div class="history-card" data-status="cancelled">
+          <div class="card-details">
+            <h3 class="room-name">Standard Double Room</h3>
+            <span class="status cancelled">Cancelled</span>
+
+            <div class="booking-data">
+              <div class="data-group check-in">
+                <span class="label">Check-in</span>
+                <span class="value">Oct 20, 2024</span>
+              </div>
+              <div class="data-group check-out">
+                <span class="label">Check-out</span>
+                <span class="value">Oct 25, 2024</span>
+              </div>
+              <div class="data-group duration">
+                <span class="label">Duration</span>
+                <span class="value">5 nights</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <div class="price-info refunded">
+              <span class="price-value">$325</span>
+              <span class="price-label">Refunded</span>
+            </div>
+            <button class="view-details-btn">View Details</button>
+          </div>
+        </div>
+
+        <div class="history-card" data-status="completed">
+          <div class="card-details">
+            <h3 class="room-name">Premium Single Room</h3>
+            <span class="status completed">Completed</span>
+
+            <div class="booking-data">
+              <div class="data-group check-in">
+                <span class="label">Check-in</span>
+                <span class="value">Sep 5, 2024</span>
+              </div>
+              <div class="data-group check-out">
+                <span class="label">Check-out</span>
+                <span class="value">Sep 12, 2024</span>
+              </div>
+              <div class="data-group duration">
+                <span class="label">Duration</span>
+                <span class="value">7 nights</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <div class="price-info">
+              <span class="price-value">$490</span>
+              <span class="price-label">Total</span>
+            </div>
+            <button class="view-details-btn">View Details</button>
+          </div>
+        </div>
+
+        <div class="pagination">
+          <button class="page-arrow" disabled>
+            <i class="fa-solid fa-angle-left"></i>
+          </button>
+          <button class="page-number active">1</button>
+          <button class="page-number">2</button>
+          <button class="page-number">3</button>
+          <button class="page-arrow">
+            <i class="fa-solid fa-angle-right"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="container footer-content">
+        <div class="footer-about">
+          <h3 class="logo">Serene</h3>
+          <p>
+            Experience luxury and comfort in every stay. Your perfect getaway
+            awaits.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Rooms</a></li>
+            <li><a href="#">Amenities</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Cancellation Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-connect">
+          <h4>Connect</h4>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2024 Serene Hotel. All rights reserved.
+      </div>
+    </footer>
+
+    <script src="script/user_history_script.js"></script>
+  </body>
+</html>
