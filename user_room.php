@@ -1,3 +1,8 @@
+<?php
+require 'admin/functions.php';    
+$rooms = query("SELECT * FROM room");
+?>
+
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -52,27 +57,30 @@
       </section>
 
       <section class="room-grid">
-        <div class="room-card" data-status="available" data-type="premium">
+        <!-- card  -->
+        <?php foreach($rooms as $room) : ?>
+        <div class="room-card" data-status="<?= $room["status"] ?>" data-type="<?= $room["room_type"] ?>">
           <img
-            src="https://via.placeholder.com/400x250?text=Deluxe+Room+Image"
-            alt="Deluxe Room"
+            src="../img/room_hotel/<?= $room["image_url"] ?>"
+            alt="Room"
             class="room-image"
           />
           <div class="room-details">
-            <h2 class="room-name">Deluxe Room</h2>
-            <span class="room-status available">Available</span>
+            <h2 class="room-name"><?= $room["name"] ?></h2>
+            <span class="room-status <?= $room["status"] ?>"><?= $room["status"] ?></span>
             <div class="room-specs">
-              <span><i class="fa-solid fa-user-group"></i> 2 Guests</span>
-              <span><i class="fa-solid fa-bed"></i> King Bed</span>
+              <span><i class="fa-solid fa-user-group"></i><?= $room["max_guest"] ?></span>
+              <span><i class="fa-solid fa-bed"></i><?= $room["bed_type"] ?></span>
             </div>
             <div class="room-footer">
-              <span class="room-price">$189<small>/night</small></span>
+              <span class="room-price">$<?= $room["price_per_night"] ?><small>/night</small></span>
               <button class="view-details-btn">View Details</button>
             </div>
           </div>
         </div>
+        <?php endforeach; ?>
 
-        <div class="room-card" data-status="available" data-type="premium">
+        <!-- <div class="room-card" data-status="available" data-type="premium">
           <img
             src="https://via.placeholder.com/400x250?text=Ocean+Suite+Image"
             alt="Ocean Suite"
@@ -90,9 +98,9 @@
               <button class="view-details-btn">View Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="room-card" data-status="available" data-type="standard">
+        <!-- <div class="room-card" data-status="available" data-type="standard">
           <img
             src="https://via.placeholder.com/400x250?text=Standard+Room+Image"
             alt="Standard Room"
@@ -110,9 +118,9 @@
               <button class="view-details-btn">View Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="room-card" data-status="limited" data-type="premium">
+        <!-- <div class="room-card" data-status="limited" data-type="premium">
           <img
             src="https://via.placeholder.com/400x250?text=Presidential+Suite+Image"
             alt="Presidential Suite"
@@ -124,15 +132,15 @@
             <div class="room-specs">
               <span><i class="fa-solid fa-user-group"></i> 6 Guests</span>
               <span><i class="fa-solid fa-bed"></i> 3 King Beds</span>
-            </div>
+            </div>v
             <div class="room-footer">
               <span class="room-price">$799<small>/night</small></span>
               <button class="view-details-btn">View Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="room-card" data-status="available" data-type="standard">
+        <!-- <div class="room-card" data-status="available" data-type="standard">
           <img
             src="https://via.placeholder.com/400x250?text=Family+Room+Image"
             alt="Family Room"
@@ -150,9 +158,9 @@
               <button class="view-details-btn">View Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="room-card" data-status="unavailable" data-type="premium">
+        <!-- <div class="room-card" data-status="unavailable" data-type="premium">
           <img
             src="https://via.placeholder.com/400x250?text=Penthouse+Image"
             alt="Penthouse"
@@ -170,9 +178,9 @@
               <button class="view-details-btn disabled" disabled>Booked</button>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="room-card" data-status="available" data-type="standard">
+        <!-- <div class="room-card" data-status="available" data-type="standard">
           <img
             src="https://via.placeholder.com/400x250?text=Garden+View+Image"
             alt="Garden View"
@@ -190,9 +198,9 @@
               <button class="view-details-btn">View Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="room-card" data-status="available" data-type="premium">
+        <!-- <div class="room-card" data-status="available" data-type="premium">
           <img
             src="https://via.placeholder.com/400x250?text=Executive+Room+Image"
             alt="Executive Room"
@@ -210,9 +218,9 @@
               <button class="view-details-btn">View Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="room-card" data-status="limited" data-type="premium">
+        <!-- <div class="room-card" data-status="limited" data-type="premium">
           <img
             src="https://via.placeholder.com/400x250?text=Honeymoon+Suite+Image"
             alt="Honeymoon Suite"
@@ -230,7 +238,7 @@
               <button class="view-details-btn">View Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
       </section>
     </main>
 

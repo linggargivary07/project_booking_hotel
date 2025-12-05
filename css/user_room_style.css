@@ -211,10 +211,10 @@ a {
   background-color: #e8f5e9;
   color: var(--available-color);
 }
-.room-status.limited {
+/* .room-status.limited {
   background-color: #fff3e0;
   color: var(--limited-color);
-}
+} */
 .room-status.unavailable {
   background-color: #ffebee;
   color: var(--unavailable-color);
