@@ -37,9 +37,12 @@
       <section class="card profile-section personal-info-card">
         <div class="section-header">
           <h2>Personal Information</h2>
-          <button class="edit-btn">
+          <a href="user_edit_profile.php">
+            <button class="edit-btn">
             <i class="fa-solid fa-pen-to-square"></i> Edit Profile
-          </button>
+            </button>
+          </a>
+          
         </div>
 
         <div class="info-grid">

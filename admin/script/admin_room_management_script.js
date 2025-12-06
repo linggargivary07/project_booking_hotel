@@ -52,28 +52,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 4. Fungsionalitas Tombol Aksi (Edit, View, Delete)
-  document.getElementById("room-data").addEventListener("click", (event) => {
-    const target = event.target.closest("button");
-    if (!target) return;
+  // document.getElementById("room-data").addEventListener("click", (event) => {
+  //   const target = event.target.closest("button");
+  //   if (!target) return;
 
-    const row = target.closest("tr");
-    const roomNumber = row.querySelector("td:first-child").textContent;
-    const roomType = row.querySelector("td:nth-child(2)").textContent;
+  //   const row = target.closest("tr");
+  //   const roomNumber = row.querySelector("td:first-child").textContent;
+  //   const roomType = row.querySelector("td:nth-child(2)").textContent;
 
-    if (target.classList.contains("edit-btn")) {
-      alert(`Mengedit Kamar ${roomNumber} (${roomType})`);
-    } else if (target.classList.contains("view-btn")) {
-      alert(`Melihat Detail Kamar ${roomNumber} (${roomType})`);
-    } else if (target.classList.contains("delete-btn")) {
-      if (
-        confirm(
-          `Apakah Anda yakin ingin menghapus Kamar ${roomNumber} (${roomType})?`
-        )
-      ) {
-        alert(`Kamar ${roomNumber} dihapus.`);
-        // Di sini Anda akan menjalankan kode AJAX untuk menghapus data dari server
-        // row.remove(); // Hapus baris dari tampilan
-      }
-    }
-  });
+  //   if (target.classList.contains("edit-btn")) {
+  //     alert(`Mengedit Kamar ${roomNumber} (${roomType})`);
+  //   } else if (target.classList.contains("view-btn")) {
+  //     alert(`Melihat Detail Kamar ${roomNumber} (${roomType})`);
+  //   } else if (target.classList.contains("delete-btn")) {
+  //   }
+  // });
 });

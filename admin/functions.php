@@ -92,5 +92,11 @@ function upload() {
     
 }
 
+function hapus($id) {
+    global $conn;
+    mysqli_query($conn, "DELETE FROM room WHERE room_id = $id") or die(mysqli_error($conn));
+    return mysqli_affected_rows($conn);
+}
+
 
 ?>
