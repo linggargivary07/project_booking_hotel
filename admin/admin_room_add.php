@@ -7,8 +7,8 @@ error_reporting(E_ALL);
 
 if( isset($_POST["submit"]) ) {
     // cek apakah data berhasil ditambahkan atau tidak
-    var_dump($_POST);
-    var_dump($_FILES);die;
+    // var_dump($_POST);
+    // var_dump($_FILES);
 
     if( tambah($_POST) > 0 ) {
         echo "data berhasil ditambahkan!";

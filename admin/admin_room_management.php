@@ -39,7 +39,10 @@
             <main class="dashboard-content">
 
                 <div class="management-bar">
-                    <button class="btn-primary"><i class="fa-solid fa-plus"></i> Add New Room</button>
+                    <a href="admin_room_add.php">
+                        <button class="btn-primary"><i class="fa-solid fa-plus"></i> Add New Room</button>
+                    </a>
+                    
                     
                     <div class="filter-group">
                         <span class="filter-label">Filter:</span>
