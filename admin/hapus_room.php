@@ -17,5 +17,4 @@ if( hapus($id) > 0 ) {
         </script>
     ";
 }
-
 ?>

@@ -66,7 +66,7 @@ $rooms = query("SELECT * FROM room");
             class="room-image"
           />
           <div class="room-details">
-            <h2 class="room-name"><?= $room["name"] ?></h2>
+            <h2 class="room-name"><?= $room["room_name"] ?></h2>
             <span class="room-status <?= $room["status"] ?>"><?= $room["status"] ?></span>
             <div class="room-specs">
               <span><i class="fa-solid fa-user-group"></i><?= $room["max_guest"] ?></span>

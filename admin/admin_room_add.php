@@ -67,8 +67,8 @@ if( isset($_POST["submit"]) ) {
                     <form id="add-room-form" action="" method="POST" enctype="multipart/form-data">
                         
                         <div class="form-group">
-                            <label for="name">Room Name</label>
-                            <input type="text" id="name" name="name" placeholder="nama ruang" required>
+                            <label for="room_name">Room Name</label>
+                            <input type="text" id="room_name" name="room_name" placeholder="nama ruang" required>
                         </div>
                         
                         <div class="form-group">

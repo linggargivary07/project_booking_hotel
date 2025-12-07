@@ -22,7 +22,7 @@ function query($query) {
 function tambah($data) {
     global $conn;
 
-    $name = $data['name'];
+    $room_name = $data['room_name'];
     $description = htmlspecialchars($data['description']);
     $price_per_night = htmlspecialchars($data['price_per_night']);
     $max_guest = htmlspecialchars($data['max_guest']);
@@ -38,9 +38,9 @@ function tambah($data) {
     }
 
     $query = "INSERT INTO room 
-        (room_id, name, description, price_per_night, max_guest, bed_type, image_url, status, room_type)
+        (room_id, room_name, description, price_per_night, max_guest, bed_type, image_url, status, room_type)
         VALUES 
-        (NULL, '$name', '$description', '$price_per_night', '$max_guest', '$bed_type', '$image_url', '$status', '$room_type')
+        (NULL, '$room_name', '$description', '$price_per_night', '$max_guest', '$bed_type', '$image_url', '$status', '$room_type')
     ";
 
     mysqli_query($conn, $query) or die(mysqli_error($conn));

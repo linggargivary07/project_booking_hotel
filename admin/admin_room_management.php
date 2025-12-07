@@ -54,8 +54,7 @@ $rooms = query("SELECT * FROM room");
                         <select id="room-filter" class="custom-select">
                             <option value="all">All Rooms</option>
                             <option value="available">Available</option>
-                            <option value="occupied">Occupied</option>
-                            <option value="maintenance">Maintenance</option>
+                            <option value="unavalable">Unavailable</option>
                         </select>
                     </div>
 
@@ -84,7 +83,7 @@ $rooms = query("SELECT * FROM room");
                             <?php foreach($rooms as $room): ?>
                             <tr data-status="<?= $room['status'] ?>">
                                 <td><?= $room['room_id'] ?></td>
-                                <td><?= $room['name'] ?></td>
+                                <td><?= $room['room_name'] ?></td>
                                 <td><?= $room['room_type'] ?></td>
                                 <td><span class="status-badge <?= $room['status'] ?>"><?= $room['status'] ?></span></td>
                                 <td><?= $room['price_per_night'] ?></td>
