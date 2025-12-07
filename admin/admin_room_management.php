@@ -89,7 +89,7 @@ $rooms = query("SELECT * FROM room");
                                 <td><?= $room['price_per_night'] ?></td>
                                 <td><?= $room['max_guest'] ?></td>
                                 <td>
-                                    <a href="edit_room.php?id=<?= $room['room_id'] ?>">
+                                    <a href="admin_room_update.php?id=<?= $room['room_id'] ?>">
                                         <button class="action-btn edit-btn"  title="Edit"><i class="fa-solid fa-pen"></i></button>
                                     </a>
                                     <a href="view_room.php?id=<?= $room['room_id'] ?>">
