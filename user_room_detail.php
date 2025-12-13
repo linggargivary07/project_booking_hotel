@@ -1,3 +1,11 @@
+<?php
+// user_room_detail.php
+// This page displays detailed information about a specific room.
+require 'admin/functions.php';
+$room_id = $_GET['room_id'];
+$room = query("SELECT * FROM room WHERE room_id = $room_id")[0];
+?>
+
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -33,39 +41,34 @@
       </div>
     </header>
 
+    <!-- main container -->
     <main class="container main-content">
       <div class="room-content-grid">
         <section class="room-info-section">
           <div class="room-image-container">
             <img
-              src="https://via.placeholder.com/1000x550?text=Deluxe+King+Room"
+              src="../img/room_hotel/<?= $room["image_url"] ?>"
               alt="Deluxe King Room Interior"
               class="main-room-image"
             />
           </div>
 
           <div class="room-title-bar">
-            <h1 class="room-name">Deluxe King Room</h1>
-            <span class="room-status available">Available</span>
+            <h1 class="room-name"><?= $room["room_name"] ?></h1>
+            <span class="room-status <?= $room["status"] ?>"><?= $room["status"] ?></span>
           </div>
 
           <div class="room-specs">
-            <span><i class="fa-solid fa-user-group"></i> Up to 2 guests</span>
+            <span><i class="fa-solid fa-user-group"></i> Up to <?= $room["max_guest"] ?> guests</span>
             <span class="dot-separator"></span>
-            <span><i class="fa-solid fa-bed"></i> 1 King Bed</span>
+            <span><i class="fa-solid fa-bed"></i> <?= $room["bed_type"] ?></span>
             <span class="dot-separator"></span>
-            <span><i class="fa-solid fa-square"></i> 35 sqm</span>
           </div>
 
           <div class="room-description">
             <h2>Room Description</h2>
             <p>
-              Experience luxury and comfort in our spacious Deluxe King Room.
-              Featuring a plush king-size bed, modern amenities, and stunning
-              city views, this room is perfect for business travelers and
-              couples seeking a premium stay. The contemporary design combines
-              elegance with functionality, ensuring your comfort throughout your
-              visit.
+              <?= $room["description"] ?>
             </p>
           </div>
 
@@ -105,7 +108,7 @@
 
         <aside class="booking-widget">
           <div class="price-box">
-            <span class="main-price">$249</span>
+            <span class="main-price"><?= $room["price_per_night"] ?></span>
             <span class="price-unit">/ night</span>
             <p class="includes-info">Includes taxes and fees</p>
           </div>

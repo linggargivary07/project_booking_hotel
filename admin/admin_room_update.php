@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // ambil id
-$id = $_GET['id'];
+$id = $_GET['room_id'];
 // query data berdasarkan id
 $room = query("SELECT * FROM room WHERE room_id = $id")[0];
 

@@ -35,16 +35,19 @@
 
     <main class="container main-content">
       <section class="dashboard-header">
-        <h1>Welcome back, **Sarah**</h1>
+        <h1>Welcome back, human</h1>
         <p>Manage your bookings and explore new destinations</p>
       </section>
 
       <section class="active-bookings">
         <div class="section-title-bar">
           <h2>Active Bookings</h2>
-          <button class="new-booking-btn">
+          <a href="user_room.php">
+            <button class="new-booking-btn">
             <i class="fa-solid fa-plus"></i> New Booking
           </button>
+          </a>
+          
         </div>
 
         <div class="booking-card" data-status="confirmed">

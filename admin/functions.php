@@ -135,5 +135,64 @@ function hapus($id) {
     return mysqli_affected_rows($conn);
 }
 
+function register($data) {
+    global $conn;
+
+    $first_name = strtolower(stripslashes($data['first_name']));
+    $last_name = strtolower(stripslashes($data['last_name']));
+    $email = strtolower(stripslashes($data['email']));
+    $password = mysqli_real_escape_string($conn, $data['password']);
+    $role = htmlspecialchars($data['role']);
+    $location = htmlspecialchars($data['location']);
+    $date_of_birth = htmlspecialchars($data['date_of_birth']);
+    $phone_number = htmlspecialchars($data['phone_number']);
+
+    // cek email sudah ada atau belum
+    $result = mysqli_query($conn, "SELECT email FROM users WHERE email = '$email'");
+    if( mysqli_fetch_assoc($result) ) {
+        echo "<script>
+                alert('Email sudah terdaftar!');
+              </script>";
+        return false;
+    }
+
+    // enkripsi password
+    // $password = password_hash($password, PASSWORD_DEFAULT);
+
+    // tambahkan user baru ke database
+    mysqli_query($conn, "INSERT INTO users VALUES (NULL, '$email', '$password', '$first_name', '$last_name', '$phone_number', '$date_of_birth', '$location', '$role')");
+
+    return mysqli_affected_rows($conn);
+}   
+
+function login($data) {
+    global $conn;
+
+    $email = $data["email"];
+    $password = $data["password"];
+
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
+
+    // cek email
+    if(mysqli_num_rows($result) === 1) {
+        // cek password
+        $row = mysqli_fetch_assoc($result);
+        if($password == $row["password"]) {
+            if( $row["role"] == "admin" ) {
+                header("Location: admin/admin_room_management.php");
+                exit;
+            }else {
+                header("Location: user_dashboard.php");
+                exit;
+            }
+        }
+    }
+
+    echo "<script>
+            alert('Email atau password salah!');
+          </script>";
+    return false;
+}
+
 
 ?>

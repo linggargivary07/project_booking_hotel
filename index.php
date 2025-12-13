@@ -1,3 +1,12 @@
+<?php 
+require 'admin/functions.php';
+
+if(isset($_POST["login"])) {
+    login($_POST);
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -19,11 +28,12 @@
             <h1 class="title">Sign In</h1>
             <p class="subtitle">Welcome back to your booking account</p>
 
-            <form id="loginForm">
+            <!-- login form -->
+            <form id="loginForm" method="POST" action="">
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <div class="input-icon-container">
-                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
                         <i class="material-icons input-icon-right">mail_outline</i>
                     </div>
                 </div>
@@ -31,14 +41,14 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-icon-container">
-                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
                         <i class="material-icons input-icon-right toggle-password" onclick="togglePasswordVisibility()">visibility_off</i>
                     </div>
                 </div>
 
                 <a href="#" class="forgot-password">Forgot Password?</a>
 
-                <button type="submit" class="sign-in-button">Sign In</button>
+                <button type="submit" name="login" class="sign-in-button">Sign In</button>
             </form>
 
             <div class="footer-links">
@@ -55,6 +65,6 @@
         </div>
     </div>
 
-    <script src="script/index.js"></script>
+    <!-- <script src="script/index.js"></script> -->
 </body>
 </html>

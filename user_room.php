@@ -74,7 +74,10 @@ $rooms = query("SELECT * FROM room");
             </div>
             <div class="room-footer">
               <span class="room-price">Rp. <?= $room["price_per_night"] ?><small>/night</small></span>
-              <button class="view-details-btn">View Details</button>
+              <a href="user_room_detail.php?room_id=<?= $room["room_id"] ?>">
+                <button class="view-details-btn">View Details</button>
+              </a>
+              
             </div>
           </div>
         </div>

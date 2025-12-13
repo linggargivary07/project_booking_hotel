@@ -48,13 +48,13 @@ $rooms = query("SELECT * FROM room");
                         <button class="btn-primary"><i class="fa-solid fa-plus"></i> Add New Room</button>
                     </a>
                     
-                    
                     <div class="filter-group">
                         <span class="filter-label">Filter:</span>
                         <select id="room-filter" class="custom-select">
                             <option value="all">All Rooms</option>
                             <option value="available">Available</option>
-                            <option value="unavalable">Unavailable</option>
+                            <option value="occupied">Occupied</option>
+                            <option value="maintenance">Maintenance</option>
                         </select>
                     </div>
 
@@ -73,31 +73,28 @@ $rooms = query("SELECT * FROM room");
                                 <th>Room Type</th>
                                 <th>Status</th>
                                 <th>Price/Night</th>
-                                <th>Max Guests</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody id="room-data">
-
-                            <!-- // ulang setiap baris di bawah ini sesuai data dari database -->
-                            <?php foreach($rooms as $room): ?>
-                            <tr data-status="<?= $room['status'] ?>">
-                                <td><?= $room['room_id'] ?></td>
-                                <td><?= $room['room_name'] ?></td>
-                                <td><?= $room['room_type'] ?></td>
-                                <td><span class="status-badge <?= $room['status'] ?>"><?= $room['status'] ?></span></td>
-                                <td><?= $room['price_per_night'] ?></td>
-                                <td><?= $room['max_guest'] ?></td>
+                            <?php foreach( $rooms as $room ) : ?>
+                            <tr data-status="<?= $room['status']; ?>">
+                                <td><?= $room['room_id']; ?></td>
+                                <td><?= $room['room_name']; ?></td>
+                                <td><?= $room['room_type']; ?></td>
+                                <td><span class="status-badge <?= $room['status']; ?>"><?= $room['status']; ?></span></td>
+                                <td>Rp. <?= $room['price_per_night']; ?></td>
                                 <td>
-                                    <a href="admin_room_update.php?id=<?= $room['room_id'] ?>">
-                                        <button class="action-btn edit-btn"  title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                    <a href="admin_room_update.php?room_id=<?= $room["room_id"] ?>">
+                                        <button class="action-btn edit-btn" title="Edit"><i class="fa-solid fa-pen"></i></button>
                                     </a>
-                                    <a href="view_room.php?id=<?= $room['room_id'] ?>">
+                                    <a href="">
                                         <button class="action-btn view-btn" title="View"><i class="fa-solid fa-eye"></i></button>
                                     </a>
-                                    <a href="hapus_room.php?id=<?= $room['room_id'] ?>">
+                                    <a href="hapus_room.php?room_id=<?= $room["room_id"] ?>">
                                         <button class="action-btn delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
                                     </a>
+                                    
                                 </td>
                             </tr>
                             <?php endforeach; ?>
@@ -112,8 +109,8 @@ $rooms = query("SELECT * FROM room");
                                     <button class="action-btn view-btn" title="View"><i class="fa-solid fa-eye"></i></button>
                                     <button class="action-btn delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
                                 </td>
-                            </tr> -->
-                            <!-- <tr data-status="available">
+                            </tr>
+                            <tr data-status="available">
                                 <td>103</td>
                                 <td>Deluxe Suite</td>
                                 <td><span class="status-badge available">Available</span></td>
@@ -124,8 +121,8 @@ $rooms = query("SELECT * FROM room");
                                     <button class="action-btn view-btn" title="View"><i class="fa-solid fa-eye"></i></button>
                                     <button class="action-btn delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
                                 </td>
-                            </tr> -->
-                            <!-- <tr data-status="maintenance">
+                            </tr>
+                            <tr data-status="maintenance">
                                 <td>201</td>
                                 <td>Standard Single</td>
                                 <td><span class="status-badge maintenance">Maintenance</span></td>
@@ -136,8 +133,8 @@ $rooms = query("SELECT * FROM room");
                                     <button class="action-btn view-btn" title="View"><i class="fa-solid fa-eye"></i></button>
                                     <button class="action-btn delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
                                 </td>
-                            </tr> -->
-                            <!-- <tr data-status="occupied">
+                            </tr>
+                            <tr data-status="occupied">
                                 <td>202</td>
                                 <td>Standard Double</td>
                                 <td><span class="status-badge occupied">Occupied</span></td>
@@ -148,8 +145,8 @@ $rooms = query("SELECT * FROM room");
                                     <button class="action-btn view-btn" title="View"><i class="fa-solid fa-eye"></i></button>
                                     <button class="action-btn delete-btn" title="Delete"><i class="fa-solid fa-trash"></i></button>
                                 </td>
-                            </tr> -->
-                            <!-- <tr data-status="available">
+                            </tr>
+                            <tr data-status="available">
                                 <td>301</td>
                                 <td>Presidential Suite</td>
                                 <td><span class="status-badge available">Available</span></td>
