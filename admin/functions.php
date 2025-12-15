@@ -1,4 +1,5 @@
 <?php
+session_start();
 $conn = mysqli_connect("localhost", "root", "", "booking_hotels");
 
 // ini_set('display_errors', 1);
@@ -170,14 +171,19 @@ function login($data) {
 
     $email = $data["email"];
     $password = $data["password"];
+    // $_SESSION["email"] = $email;
 
     $result = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
+    // $_SESSION['user_id'] = mysqli_fetch_assoc($result)['user_id'];
 
     // cek email
     if(mysqli_num_rows($result) === 1) {
         // cek password
         $row = mysqli_fetch_assoc($result);
         if($password == $row["password"]) {
+            // set session
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['role'] = $row['role'];
             if( $row["role"] == "admin" ) {
                 header("Location: admin/admin_room_management.php");
                 exit;
@@ -192,6 +198,95 @@ function login($data) {
             alert('Email atau password salah!');
           </script>";
     return false;
+}
+
+function hitungTotalHarga($data) {
+    global $conn;
+
+    $room_id = $data['room_id'];
+    $check_in = $data['check_in_date'];
+    $check_out = $data['check_out_date'];
+    $num_guests = $data['num_guests'];
+
+    // Ambil harga per malam dari database
+    $result = mysqli_query($conn, "SELECT price_per_night FROM room WHERE room_id = $room_id");
+    $row = mysqli_fetch_assoc($result);
+    $price_per_night = $row['price_per_night'];
+
+    // Hitung jumlah malam
+    $date1 = new DateTime($check_in);
+    $date2 = new DateTime($check_out);
+    $interval = $date1->diff($date2);
+    $nights = $interval->days;
+
+    // Hitung total harga
+    $subtotal = $price_per_night * $nights;
+    $service_fee = 5000; // Biaya layanan tetap
+    $taxes = 0.10 * $subtotal; // Pajak 10%
+    $total = $subtotal + $service_fee + $taxes;
+
+    return $total;
+}
+
+function booking($data) {
+    global $conn;
+
+    $room_id = $data['room_id'];
+    $user_id = $_SESSION['user_id'];
+    $check_in_date = $data['check_in_date'];
+    $check_out_date = $data['check_out_date'];
+    $num_guests = $data['num_guests'];
+
+    // Ambil harga per malam dari database
+    $result = mysqli_query($conn, "SELECT price_per_night FROM room WHERE room_id = $room_id");
+    $row = mysqli_fetch_assoc($result);
+    $price_per_night = $row['price_per_night'];
+
+    //cek apakah kamar tersedia pada tanggal yang dipilih
+    $checkAvailabilityQuery = "SELECT * FROM booking WHERE room_id = '$room_id' AND 
+        (('$check_in_date' BETWEEN check_in_date AND check_out_date) OR
+        ('$check_out_date' BETWEEN check_in_date AND check_out_date) OR
+        (check_in_date BETWEEN '$check_in_date' AND '$check_out_date') OR
+        (check_out_date BETWEEN '$check_in_date' AND '$check_out_date')) AND
+        booking_status = 'confirmed'";
+    $availabilityResult = mysqli_query($conn, $checkAvailabilityQuery);
+    if (mysqli_num_rows($availabilityResult) > 0) {
+        echo "<script>
+                alert('Kamar tidak tersedia pada tanggal yang dipilih!');
+              </script>";
+        return false;
+    }
+
+    // Hitung jumlah malam
+    $date1 = new DateTime($check_in_date);
+    $date2 = new DateTime($check_out_date);
+    $interval = $date1->diff($date2);
+    $nights = $interval->days;
+
+    // Hitung total harga
+    $subtotal = $price_per_night * $nights;
+    $service_fee = 5000; // Biaya layanan tetap
+    $taxes = 0.10 * $subtotal; // Pajak 10%
+    $total = $subtotal + $service_fee + $taxes;
+
+    echo "<script>
+                alert('Total harga booking: Rp. $total');
+        </script>";
+
+    $query = "INSERT INTO booking 
+        (booking_id, room_id, user_id, check_in_date, check_out_date, num_guests, total_price, booking_status)
+        VALUES 
+        (NULL, '$room_id', '$user_id', '$check_in_date', '$check_out_date', '$num_guests', '$total', 'confirmed')
+    ";
+
+    mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+    // ubah status room menjadi unavailable saat interval booking
+    $updateRoomStatusQuery = "UPDATE room SET status = 'unavailable' WHERE room_id = '$room_id'";
+    mysqli_query($conn, $updateRoomStatusQuery) or die(mysqli_error($conn)); 
+
+
+    return mysqli_affected_rows($conn);
 }
 
 

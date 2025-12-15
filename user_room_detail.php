@@ -4,6 +4,16 @@
 require 'admin/functions.php';
 $room_id = $_GET['room_id'];
 $room = query("SELECT * FROM room WHERE room_id = $room_id")[0];
+
+if( isset($_POST["booking"]) ) {
+    // Process booking form 
+    if( booking($_POST) > 0 ) {
+        echo "script>alert('Booking successful!');</script>";
+    } else {
+        echo "data gagal ditambahkan!";
+    }   
+    // (Handled in process_booking.php)
+}
 ?>
 
 <!DOCTYPE html>
@@ -113,32 +123,39 @@ $room = query("SELECT * FROM room WHERE room_id = $room_id")[0];
             <p class="includes-info">Includes taxes and fees</p>
           </div>
 
-          <form class="booking-form">
+          <!-- form untuk booking  -->
+          <form class="booking-form" method="POST" action="">
+            <input type="hidden" name="room_id" value="<?= $room['room_id']; ?>">
             <div class="form-group date-input-group">
               <label for="checkInDate">Check-in Date</label>
-              <input type="date" id="checkInDate" value="2024-03-15" />
+              <input type="date" name="check_in_date" id="checkInDate" value="2024-03-15" />
               <i class="fa-solid fa-calendar-alt calendar-icon"></i>
             </div>
 
             <div class="form-group date-input-group">
               <label for="checkOutDate">Check-out Date</label>
-              <input type="date" id="checkOutDate" value="2024-03-18" />
+              <input type="date" name="check_out_date" id="checkOutDate" value="2024-03-18" />
               <i class="fa-solid fa-calendar-alt calendar-icon"></i>
             </div>
 
             <div class="form-group">
               <label for="guests">Guests</label>
-              <select id="guests">
+              <select id="guests" name=num_guests>
                 <option value="1" selected>1 Guest</option>
                 <option value="2">2 Guests</option>
                 <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6">6 Guests</option>
               </select>
             </div>
-          </form>
+            <button class="book-btn" name="booking" id="bookRoomBtn">Book This Room</button>
+            <p class="cancellation-policy">Free cancellation until 24 hours before check-in</p>
+            </form>
 
-          <div class="price-breakdown">
+          <!-- <div class="price-breakdown">
             <div class="price-line">
-              <span>3 nights × $249</span>
+              <span>3 nights × Rp. 2000</span>
               <span>$747</span>
             </div>
             <div class="price-line">
@@ -153,12 +170,9 @@ $room = query("SELECT * FROM room WHERE room_id = $room_id")[0];
               <span>Total</span>
               <span>$846</span>
             </div>
-          </div>
+          </div> -->
 
-          <button class="book-btn" id="bookRoomBtn">Book This Room</button>
-          <p class="cancellation-policy">
-            Free cancellation until 24 hours before check-in
-          </p>
+          
         </aside>
       </div>
     </main>
@@ -204,6 +218,6 @@ $room = query("SELECT * FROM room WHERE room_id = $room_id")[0];
       </div>
     </footer>
 
-    <script src="script/user_room_detail_script.js"></script>
+    <!-- <script src="script/user_room_detail_script.js"></script> -->
   </body>
 </html>

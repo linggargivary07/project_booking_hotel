@@ -5,7 +5,7 @@ if (isset($_POST['register'])) {
     if (register($_POST) > 0) {
         echo "<script>
                 alert('Registration successful! Please login.');
-                window.location.href = 'index.html';
+                window.location.href = 'index.php';
               </script>";
     } else {
         echo "<script>
