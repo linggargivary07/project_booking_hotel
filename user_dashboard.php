@@ -1,3 +1,18 @@
+<?php
+// user_dashboard.php
+require "admin/functions.php";
+session_start();
+
+// Redirect to login if not logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit;
+}
+
+$user_id = $_SESSION['user_id'];
+$bookings = query("SELECT * FROM booking WHERE user_id = $user_id");
+?>
+
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -50,73 +65,48 @@
           
         </div>
 
-        <div class="booking-card" data-status="confirmed">
+        <!-- // pengungalanganan data booking dari database -->
+        <?php foreach ($bookings as $booking): ?>
+          <!-- ambil gambar room dari database berdasarkan room_id di booking -->
+        <?php
+          $room_id = $booking['room_id'];
+          $room = query("SELECT * FROM room WHERE room_id = $room_id")[0];
+        ?>
+        <div class="booking-card" data-status="<?= $booking["booking_status"] ?>">
           <img
-            src="https://via.placeholder.com/150x100?text=Grand+Plaza"
-            alt="Grand Plaza Hotel"
+            src="../img/room_hotel/<?= $room['image_url'] ?>"
+            alt="<?= $room['room_name'] ?>"
             class="hotel-image"
           />
           <div class="booking-details">
-            <h3 class="hotel-name">Grand Plaza Hotel</h3>
-            <p class="room-info">Deluxe Suite • Room 405</p>
+            <h3 class="hotel-name"><?= $room['room_name'] ?></h3>
+            <p class="room-info"><?= $room['description'] ?></p>
 
             <div class="booking-specs">
               <div class="spec-item">
                 <span class="spec-label">Check-in</span>
-                <span class="spec-value">Dec 24, 2024</span>
+                <span class="spec-value"><?= $booking['check_in_date'] ?></span>
               </div>
               <div class="spec-item">
                 <span class="spec-label">Check-out</span>
-                <span class="spec-value">Dec 28, 2024</span>
+                <span class="spec-value"><?= $booking['check_out_date'] ?></span>
               </div>
               <div class="spec-item">
                 <span class="spec-label">Guests</span>
-                <span class="spec-value">2 Adults</span>
+                <span class="spec-value"><?= $booking['num_guests'] ?></span>
               </div>
             </div>
           </div>
 
           <div class="booking-actions">
-            <span class="status confirmed">Confirmed</span>
+            <span class="status <?= $booking['booking_status'] ?>"><?= $booking['booking_status'] ?></span>
             <button class="action-btn view-btn">View</button>
             <button class="action-btn modify-btn">Modify</button>
           </div>
         </div>
+        <?php endforeach; ?>
 
-        <div class="booking-card" data-status="upcoming">
-          <img
-            src="https://via.placeholder.com/150x100?text=Seaside+Resort"
-            alt="Seaside Resort & Spa"
-            class="hotel-image"
-          />
-          <div class="booking-details">
-            <h3 class="hotel-name">Seaside Resort & Spa</h3>
-            <p class="room-info">Ocean View Room • Room 212</p>
-
-            <div class="booking-specs">
-              <div class="spec-item">
-                <span class="spec-label">Check-in</span>
-                <span class="spec-value">Jan 15, 2025</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Check-out</span>
-                <span class="spec-value">Jan 20, 2025</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Guests</span>
-                <span class="spec-value">2 Adults, 1 Child</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="booking-actions">
-            <span class="status upcoming">Upcoming</span>
-            <button class="action-btn view-btn">View</button>
-            <button class="action-btn modify-btn">Modify</button>
-          </div>
-        </div>
-
-        <div class="booking-card" data-status="upcoming">
+        <!-- <div class="booking-card" data-status="upcoming">
           <img
             src="https://via.placeholder.com/150x100?text=Seaside+Resort"
             alt="Seaside Resort & Spa"
@@ -147,7 +137,40 @@
             <button class="action-btn view-btn">View</button>
             <button class="action-btn modify-btn">Modify</button>
           </div>
-        </div>
+        </div> -->
+
+        <!-- <div class="booking-card" data-status="upcoming">
+          <img
+            src="https://via.placeholder.com/150x100?text=Seaside+Resort"
+            alt="Seaside Resort & Spa"
+            class="hotel-image"
+          />
+          <div class="booking-details">
+            <h3 class="hotel-name">Seaside Resort & Spa</h3>
+            <p class="room-info">Ocean View Room • Room 212</p>
+
+            <div class="booking-specs">
+              <div class="spec-item">
+                <span class="spec-label">Check-in</span>
+                <span class="spec-value">Jan 15, 2025</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Check-out</span>
+                <span class="spec-value">Jan 20, 2025</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Guests</span>
+                <span class="spec-value">2 Adults, 1 Child</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-actions">
+            <span class="status upcoming">Upcoming</span>
+            <button class="action-btn view-btn">View</button>
+            <button class="action-btn modify-btn">Modify</button>
+          </div>
+        </div> -->
       </section>
     </main>
 

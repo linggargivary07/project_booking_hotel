@@ -1,3 +1,19 @@
+<?php
+// user_dashboard.php
+require "admin/functions.php";
+session_start();
+
+// Redirect to login if not logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit;
+}
+
+$user_id = $_SESSION['user_id'];
+$bookings = query("SELECT * FROM booking WHERE user_id = $user_id");
+?>
+
+
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -43,25 +59,31 @@
 
       <div class="filter-tab">
         <button class="tab-btn active" data-filter="all">All Bookings</button>
-        <button class="tab-btn" data-filter="upcoming">Upcoming</button>
+        <!-- <button class="tab-btn" data-filter="upcoming">Upcoming</button>
         <button class="tab-btn" data-filter="completed">Completed</button>
-        <button class="tab-btn" data-filter="cancelled">Cancelled</button>
+        <button class="tab-btn" data-filter="cancelled">Cancelled</button> -->
       </div>
 
       <section class="booking-list">
-        <div class="history-card" data-status="upcoming">
+        <!-- booking list here -->
+        <?php foreach ($bookings as $booking): ?>
+        <?php
+          $room_id = $booking['room_id'];
+          $room = query("SELECT * FROM room WHERE room_id = $room_id")[0];
+        ?>
+        <div class="history-card" data-status="<?= $booking['status'] ?>">
           <div class="card-details">
-            <h3 class="room-name">Standard Single Room</h3>
-            <span class="status upcoming">Upcoming</span>
+            <h3 class="room-name"><?= $room['room_name'] ?></h3>
+            <span class="status <?= $booking['booking_status'] ?>"><?= $booking['booking_status'] ?></span>
 
             <div class="booking-data">
               <div class="data-group check-in">
                 <span class="label">Check-in</span>
-                <span class="value">Dec 15, 2024</span>
+                <span class="value"><?= $booking['check_in_date'] ?></span>
               </div>
               <div class="data-group check-out">
                 <span class="label">Check-out</span>
-                <span class="value">Dec 22, 2024</span>
+                <span class="value"><?= $booking['check_out_date'] ?></span>
               </div>
               <div class="data-group duration">
                 <span class="label">Duration</span>
@@ -72,14 +94,15 @@
 
           <div class="card-actions">
             <div class="price-info">
-              <span class="price-value">$420</span>
+              <span class="price-value">Rp. <?= $booking['total_price'] ?></span>
               <span class="price-label">Total</span>
             </div>
             <button class="view-details-btn">View Details</button>
           </div>
         </div>
+        <?php endforeach; ?>
 
-        <div class="history-card" data-status="completed">
+        <!-- <div class="history-card" data-status="completed">
           <div class="card-details">
             <h3 class="room-name">Deluxe Double Room</h3>
             <span class="status completed">Completed</span>
@@ -107,9 +130,9 @@
             </div>
             <button class="view-details-btn">View Details</button>
           </div>
-        </div>
+        </div> -->
 
-        <div class="history-card" data-status="upcoming">
+        <!-- <div class="history-card" data-status="upcoming">
           <div class="card-details">
             <h3 class="room-name">Economy Single Room</h3>
             <span class="status upcoming">Upcoming</span>
@@ -137,9 +160,9 @@
             </div>
             <button class="view-details-btn">View Details</button>
           </div>
-        </div>
+        </div> -->
 
-        <div class="history-card" data-status="cancelled">
+        <!-- <div class="history-card" data-status="cancelled">
           <div class="card-details">
             <h3 class="room-name">Standard Double Room</h3>
             <span class="status cancelled">Cancelled</span>
@@ -167,9 +190,9 @@
             </div>
             <button class="view-details-btn">View Details</button>
           </div>
-        </div>
+        </div> -->
 
-        <div class="history-card" data-status="completed">
+        <!-- <div class="history-card" data-status="completed">
           <div class="card-details">
             <h3 class="room-name">Premium Single Room</h3>
             <span class="status completed">Completed</span>
@@ -197,7 +220,7 @@
             </div>
             <button class="view-details-btn">View Details</button>
           </div>
-        </div>
+        </div> -->
 
         <div class="pagination">
           <button class="page-arrow" disabled>

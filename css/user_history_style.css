@@ -185,7 +185,7 @@ a {
   display: inline-block;
 }
 
-.status.upcoming {
+.status.confirmed {
   background-color: #fff3cd;
   color: var(--upcoming-color);
 }

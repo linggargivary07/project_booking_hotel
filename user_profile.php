@@ -1,3 +1,17 @@
+<?php
+require 'admin/functions.php';
+session_start();
+// Redirect to login if not logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit;
+} 
+
+$user_id = $_SESSION['user_id'];
+// Fetch user information from database
+$user = query("SELECT * FROM users WHERE user_id = $user_id")[0];
+?>
+
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -48,34 +62,34 @@
         <div class="info-grid">
           <div class="info-group">
             <span class="label">Full Name</span>
-            <span class="value">Sarah xxxxxxxxxx</span>
+            <span class="value"><?= $user['first_name'] . " " . $user['last_name'] ?></span>
           </div>
           <div class="info-group">
             <span class="label">Email Address</span>
-            <span class="value">sarah.xxxxxx@email.com</span>
+            <span class="value"><?= $user['email'] ?></span>
           </div>
           <div class="info-group">
             <span class="label">Phone Number</span>
-            <span class="value">+1 (555) 123-4567</span>
+            <span class="value"><?= $user['phone_number'] ?></span>
           </div>
 
           <div class="info-group">
             <span class="label">Date of Birth</span>
-            <span class="value">March 15, 1990</span>
+            <span class="value"><?= $user['email'] ?></span>
           </div>
           <div class="info-group">
             <span class="label">Location</span>
-            <span class="value">New York, United States</span>
+            <span class="value"><?= $user['location'] ?></span>
           </div>
           <div class="info-group">
             <span class="label">Member Since</span>
-            <span class="value">January 2022</span>
+            <span class="value">Register</span>
           </div>
         </div>
 
         <div class="profile-picture-container">
           <img
-            src="https://i.ibb.co/L5k6Y1G/woman-profile.jpg"
+            src="../img/charackter/character1.png"
             alt="Profile Picture of Sarah"
             class="profile-picture"
           />
